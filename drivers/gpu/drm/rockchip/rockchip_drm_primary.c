@@ -42,7 +42,7 @@ static bool primary_display_is_connected(struct device *dev)
 
 	/* TODO. */
 
-	return false;
+	return true;
 }
 
 static void *primary_get_panel(struct device *dev)
