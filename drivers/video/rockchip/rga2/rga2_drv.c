@@ -732,11 +732,12 @@ static int rga2_blit(rga2_session *session, struct rga2_req *req)
     int num = 0;
     struct rga2_reg *reg;
 
+#if 0
     if(rga2_convert_dma_buf(req)) {
         printk("RGA2 : DMA buf copy error\n");
         return -EFAULT;
     }
-
+#endif
     do {
         /* check value if legal */
         ret = rga2_check_param(req);
