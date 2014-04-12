@@ -460,24 +460,24 @@
 };
 
 /*lcdc1 as PRMRY(LCD),lcdc0 as EXTEND(HDMI)*/
-&lcdc1 {
+&lcdc0 {
 	status = "okay";
 	power_ctr: power_ctr {
 		rockchip,debug = <0>;
 		rockchip,mirror = <NO_MIRROR>;
 		lcd_en:lcd_en {
 			rockchip,power_type = <GPIO>;
-			gpios = <&gpio7 GPIO_A3 GPIO_ACTIVE_HIGH>;
+			gpios = <&gpio7 GPIO_B3 GPIO_ACTIVE_HIGH>;
 			rockchip,delay = <10>;
 		};
 		
-		lcd_cs:lcd_cs {
+		/*lcd_cs:lcd_cs {
 		rockchip,power_type = <GPIO>;
 			gpios = <&gpio7 GPIO_A4 GPIO_ACTIVE_HIGH>;
 			rockchip,delay = <10>;
 		};
 
-		/*lcd_rst:lcd_rst {
+		lcd_rst:lcd_rst {
 			rockchip,power_type = <GPIO>;
 			gpios = <&gpio3 GPIO_D6 GPIO_ACTIVE_HIGH>;
 			rockchip,delay = <5>;
@@ -486,7 +486,7 @@
 	};
 };
 
-&lcdc0 {
+&lcdc1 {
 	status = "okay";
 };
 
@@ -498,17 +498,17 @@
 &adc {
 	status = "okay";
 
-	rockchip_headset {
+	/*rockchip_headset {
 		compatible = "rockchip_headset";
 		headset_gpio = <&gpio0 GPIO_C2 GPIO_ACTIVE_LOW>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&gpio0_c2>;
 		io-channels = <&adc 2>; 
-       /*
+       
                hook_gpio = ;
                hook_down_type = ; //interrupt hook key down status 
-		*/       
-       };
+		       
+       }*/;
 
 	key {
 		compatible = "rockchip,key";
@@ -571,16 +571,19 @@
 &clk_core_dvfs_table {
 	operating-points = <
 		/* KHz    uV */
-//		126000 850000
-//		216000 850000
-//		312000 850000
-//		408000 850000
-//		600000 850000
-//		696000 900000
-		816000 1000000
-		1008000 1000000
-		1200000 1150000
-		1416000 1250000
+		100000 850000
+		200000 850000
+		300000 850000
+		400000 850000
+		500000 850000
+		600000 850000
+		700000 900000
+		800000 950000
+		1000000 1000000
+		1200000 1050000
+		1400000 1150000
+		1600000 1250000
+		1650000 1275000
 		>;
 	status="okay";
 };
@@ -588,12 +591,11 @@
 &clk_gpu_dvfs_table {
 	operating-points = <
 		/* KHz    uV */
-//		100000 850000
-//		200000 850000
-		300000 1025000
-		400000 1250000
-		500000 1200000
-//		600000 1250000
+		200000 950000
+		300000 950000
+		400000 1000000
+		533000 1050000
+		666000 1150000
 		>;
 	status="okay";
 };
@@ -609,7 +611,7 @@
 
 	freq_table = <
 		/*status		freq(KHz)*/
-		SYS_STATUS_NORMAL	400000
+		SYS_STATUS_NORMAL	666000
 		SYS_STATUS_SUSPEND	200000
 		SYS_STATUS_VIDEO	300000
 		SYS_STATUS_DUALVIEW	500000
