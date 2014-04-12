@@ -56,11 +56,12 @@ typedef struct _mali_dvfs_info {
 
 static mali_dvfs_info mali_dvfs_infotbl[] = {
       {925000, 100, 0, 40, 0},
-      {925000, 160, 20, 40, 0},
-      {1025000, 266, 20, 30, 0},
-      {1075000, 350, 20, 30, 0},
-      {1125000, 400, 20, 30, 0},
-      {1200000, 500, 50, 100, 0},
+ //     {925000, 160, 20, 40, 0},
+ //     {1025000, 266, 20, 40, 0},
+ //     {1075000, 350, 20, 30, 0},
+      {1125000, 400, 40, 60, 0},
+  //    {1200000, 500, 30, 60, 0},
+      {1250000, 600, 50, 100, 0},
 };
 
 #define MALI_DVFS_STEP	ARRAY_SIZE(mali_dvfs_infotbl)
@@ -409,6 +410,9 @@ void kbase_platform_dvfs_set_clock(kbase_device *kbdev, int freq)
 		return;
 	}
 	switch (freq) {
+		case 600:
+			aclk_400_rate = 600000000;
+			break;
 		case 500:
 			aclk_400_rate = 500000000;
 			break;
