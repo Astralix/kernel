@@ -338,57 +338,13 @@
 
 &i2c1 {
 	status = "okay";
-	rtc@51 {
-		compatible = "nxp,pcf8563";
-		reg = <0x51>;
-	};
-	
-	sensor@1d {
-		compatible = "gs_mma8452";
-		reg = <0x1d>;
-		type = <SENSOR_TYPE_ACCEL>;
-		irq-gpio = <&gpio8 GPIO_A0 IRQ_TYPE_EDGE_FALLING>;
-		irq_enable = <1>;
-		poll_delay_ms = <30>;
-		layout = <1>;
-	};
-		sensor@19 {
-		compatible = "gs_lis3dh";
-		reg = <0x19>;
-		type = <SENSOR_TYPE_ACCEL>;
-		irq-gpio = <&gpio0 GPIO_A0 IRQ_TYPE_LEVEL_LOW>;
-		irq_enable = <1>;
-		poll_delay_ms = <30>;
-		layout = <1>;
-	};
-		sensor@0d {
-		compatible = "ak8963";
-		reg = <0x0d>;
-		type = <SENSOR_TYPE_COMPASS>;
-		irq-gpio = <&gpio8 GPIO_A2 IRQ_TYPE_EDGE_RISING>;
-		irq_enable = <1>;
-		poll_delay_ms = <30>;
-		layout = <1>;
+	keyboard@61 {
+		compatible = "blueberry_kb";
+		reg = <0x61>;
+		kbd-gpio = <&gpio8 GPIO_A7 IRQ_TYPE_LEVEL_LOW>;
+		level2_sleep = <&gpio7 GPIO_B4 GPIO_ACTIVE_LOW>;
 	};
 
-		sensor@6b {
-		compatible = "l3g20d_gyro";
-		reg = <0x6b>;
-		type = <SENSOR_TYPE_GYROSCOPE>;
-		irq-gpio = <&gpio8 GPIO_A3 IRQ_TYPE_LEVEL_LOW>;
-		irq_enable = <1>;
-		poll_delay_ms = <30>;
-		layout = <1>;
-	};
-	sensor@10 {
-              compatible = "ls_cm3218";
-              reg = <0x10>;
-              type = <SENSOR_TYPE_LIGHT>;
-              irq-gpio = <&gpio8 GPIO_A3 IRQ_TYPE_EDGE_FALLING>;              
-              irq_enable = <1>;
-              poll_delay_ms = <30>;
-              layout = <1>;
-       };
 	
 };
 
@@ -508,7 +464,7 @@
                hook_gpio = ;
                hook_down_type = ; //interrupt hook key down status 
 		       
-       }*/;
+       };*/
 
 	key {
 		compatible = "rockchip,key";

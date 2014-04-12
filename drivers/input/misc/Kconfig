@@ -12,6 +12,13 @@ menuconfig INPUT_MISC
 
 if INPUT_MISC
 
+
+config KEYBOARD_BLUEBERRY
+    tristate "KEYBOARD_BLUEBERRY"
+    depends on I2C
+    help
+     blueberry ec base keyboard driver
+     
 config INPUT_88PM860X_ONKEY
 	tristate "88PM860x ONKEY support"
 	depends on MFD_88PM860X
